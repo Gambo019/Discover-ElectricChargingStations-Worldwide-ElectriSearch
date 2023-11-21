@@ -24,20 +24,20 @@
 
    <ol>
         <li>Clone the repository.</li>
-       <pre>
-   git clone https://github.com/your-username/electrisearch.git
-   </pre>
+            <pre>
+                git clone https://github.com/your-username/electrisearch.git
+            </pre>
         </li>
         <li>Install dependencies.</li>
-        <pre>
-   cd electrisearch
-   npm install
-   </pre>
+            <pre>
+                cd electrisearch
+                npm install
+            </pre>
         </li>
         <li>Run the application.</li>
-        <pre>
-   npm start
-   </pre>
+            <pre>
+                npm start
+            </pre>
         </li>
         <li>Open your browser and visit <a href="http://localhost:3000">http://localhost:3000</a>.</li>
     </ol>
@@ -51,6 +51,5 @@
    <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
 
 <pre><code>
-&lt;hr&gt;
 </code></pre>
    <p>Join us on the journey to a sustainable future! ⚡🌍 #EV #CleanEnergy 🚀</p>
