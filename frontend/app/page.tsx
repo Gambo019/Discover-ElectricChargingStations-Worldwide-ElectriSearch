@@ -2,7 +2,7 @@ import React from 'react'
 
 function App() {
   return (
-    <div>App Main Route</div>
+    <div className='mt-10'>App Main Route</div>
   )
 }
 
