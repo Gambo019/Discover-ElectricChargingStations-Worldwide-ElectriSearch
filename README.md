@@ -25,7 +25,7 @@
    <ol>
         <li>Clone the repository.</li>
        <pre>
-        git clone https://github.com/your-username/electrisearch.git
+    git clone https://github.com/your-username/electrisearch.git
    </pre>
         </li>
         <li>Install dependencies.</li>
