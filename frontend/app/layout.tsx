@@ -18,7 +18,7 @@ const Layout = ({ children } : PropsWithChildren) => {
       <div className='w-full font-railway'>
         <Navbar />
         <main className='mt-[65px]'>{children}</main>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   )
