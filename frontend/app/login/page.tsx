@@ -52,6 +52,23 @@ function Login () {
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='··········'
             />
+            <div className='w-full flex items-center mt-3 justify-between'>
+              <div className='flex gap-2 items-center text-left'>
+                <input type="checkbox" className='w-[20px] h-[20px] hover:border-2 bg-gray-700 border-[1px] border-gray-400 rounded-md checked:border-2 hover:border-amber-500 checked:bg-amber-500 checked:border-amber-500 appearance-none' />
+                <p className='text-gray-100 text-sm'>Show Password</p>
+              </div>
+              <a
+                className='text-amber-500 text-right text-sm'
+                href="#"
+              >Forgot Password?</a>
+            </div>
+            <button className='w-full h-10 mt-5 bg-indigo-700 text-gray-100 rounded-lg'>
+              Sign in to your Account
+            </button>
+            <div className='flex gap-2 text-left text-xs mt-5'>
+              <p className='text-gray-300'>Don't have an account yet?</p>
+              <a className='text-amber-500' href="#">Sign up Here</a>
+            </div>
           </div>
         </div>
       </div>
