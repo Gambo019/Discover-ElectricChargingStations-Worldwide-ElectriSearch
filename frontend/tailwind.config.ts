@@ -15,8 +15,8 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        opensans: ['var(--font-opensans)', ...fontFamily.sans]
-      }
+        'railway': ['Raleway', 'sans-serif'],
+      },
     },
   },
   plugins: [],
