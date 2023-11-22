@@ -50,6 +50,5 @@
 
    <p>This project is licensed under the <a href="LICENSE">MIT License</a>.</p>
 
-<pre><code>
-</code></pre>
+   <br/>
    <p>Join us on the journey to a sustainable future! ⚡🌍 #EV #CleanEnergy 🚀</p>
