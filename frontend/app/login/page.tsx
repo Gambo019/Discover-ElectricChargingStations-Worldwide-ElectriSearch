@@ -12,6 +12,17 @@ import { FaApple } from "react-icons/fa";
 
 function Login () {
 
+  const handleLogin = () => {
+    let response = fetch('http://localhost:8080/auth/login', {
+      method: 'POST',
+    })
+    .then(response => response.json())
+    .catch((error) => {
+      console.log("Error", error);
+    })
+    return response;
+  }
+
   return (
     <div className='w-full h-fit bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
@@ -43,12 +54,14 @@ function Login () {
             <h4 className='mt-2 text-left text-gray-100 mt-0'>Email</h4>
             <input
               type="email"
+              name='email'
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Enter you email'
             />
             <h4 className='mt-2 text-left text-gray-100'>Password</h4>
             <input
               type="password"
+              name='password'
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='··········'
             />
@@ -62,7 +75,10 @@ function Login () {
                 href="#"
               >Forgot Password?</a>
             </div>
-            <button className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'>
+            <button
+              onClick={handleLogin}
+              className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'
+            >
               Sign in to your Account
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
