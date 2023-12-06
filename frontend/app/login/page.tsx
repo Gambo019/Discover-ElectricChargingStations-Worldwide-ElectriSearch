@@ -12,22 +12,35 @@ import { FaApple } from "react-icons/fa";
 
 function Login () {
 
-  const handleLogin = () => {
-    let response = fetch('http://localhost:8080/auth/login', {
-      method: 'POST',
-    })
-    .then(response => response.json())
-    .catch((error) => {
-      console.log("Error", error);
-    })
-    return response;
-  }
+  const handleLogin = async (e: { preventDefault: () => void; } | undefined) => {
+    e.preventDefault()
+
+    try {
+      const response = await fetch('http://localhost:8080/auth/login', {
+        method: 'POST',
+      });
+  
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = await response.json();
+      console.log("Login successful:", data);
+    } catch (error) {
+      console.error("Error during login:", error);
+    }
+    console.log("Hi");
+  };
+  
 
   return (
     <div className='w-full h-fit bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
-        <div className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
+        <form onClick={(e) => {
+          e.preventDefault()
+          handleLogin
+        }} className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
           <h1 className='text-left text-2xl font-bold text-gray-100'>Login to your Account</h1>
           <div className='px-1'>
             <div className='w-full block lg:flex justify-between mt-5'>
@@ -76,7 +89,6 @@ function Login () {
               >Forgot Password?</a>
             </div>
             <button
-              onClick={handleLogin}
               className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'
             >
               Sign in to your Account
@@ -86,7 +98,7 @@ function Login () {
               <a className='text-amber-500 hover:text-amber-400' href="#">Sign up Here</a>
             </div>
           </div>
-        </div>
+        </form>
         <img
           className='w-full lg:w-[50%] align-middle mt-10'
           src={CarStation.src}
