@@ -9,7 +9,7 @@ import { FaApple } from "react-icons/fa";
 
 function Register() {
   return (
-    <div className='w-full h-screen bg-amber-500 pt-7'>
+    <div className='w-full min-h-screen bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
         <div className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>

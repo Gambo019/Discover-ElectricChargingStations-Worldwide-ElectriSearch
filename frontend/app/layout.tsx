@@ -17,9 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap" rel="stylesheet" />
       </Head>
       <Navbar />
-      {/* This container is only for centering the content, without applying max-width or padding */}
       <div className="flex flex-col w-full flex-1">
-        {/* Apply padding and max-width here if needed for specific sections, not for the background */}
         <main className="mt-[65px] mx-auto w-full">
           {children}
         </main>
