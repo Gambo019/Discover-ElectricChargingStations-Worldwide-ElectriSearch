@@ -34,7 +34,7 @@ function Login () {
   
 
   return (
-    <div className='w-full h-fit bg-amber-500 pt-7'>
+    <div className='w-full h-screen bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
         <form onClick={(e) => {
