@@ -12,7 +12,7 @@ import { FaApple } from "react-icons/fa";
 
 function Login () {
 
-  const handleLogin = async (e: { preventDefault: () => void; } | undefined) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
     try {

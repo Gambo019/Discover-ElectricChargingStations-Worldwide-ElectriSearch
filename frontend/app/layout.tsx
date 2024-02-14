@@ -15,7 +15,7 @@ const Layout = ({ children } : PropsWithChildren) => {
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap" rel="stylesheet"></link>
       </Head>
-      <div className='w-full font-railway'>
+      <div className='w-full min-h-screen font-railway'>
         <Navbar />
         <main className='mt-[65px]'>{children}</main>
         {/* <Footer /> */}
