@@ -1,4 +1,5 @@
-<h1>ElectriSearch 🌐⚡(Site On Development)</h1>
+<h1>🌐⚡ElectriSearch</h1>
+<h3>(Site on Development)</h3>
 
    <p>Discover electric charging stations worldwide with ElectriSearch! 🚗💨</p>
    <img src='https://ik.imagekit.io/r67xuhpwk/Screenshot%202024-02-14%20172230.png?updatedAt=1708036139099' width='100%' />
