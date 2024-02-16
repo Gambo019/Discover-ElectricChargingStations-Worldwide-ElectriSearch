@@ -14,10 +14,7 @@ def create():
 # Read
 @app.route('/', methods=['GET'])
 def get_init():
-    results = collection.insert_one({'email': 'mathiasmendoza_vargas14@hotmail.com', 'password': '12345'})
-    if results:
-        print(results)
-        return '<h1>Welcome</h1>'
+    return '<h1>Welcome</h1>'
 
 @app.route('/read/<id>', methods=['GET'])
 def read(id):

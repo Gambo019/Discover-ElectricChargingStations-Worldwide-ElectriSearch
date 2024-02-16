@@ -1,10 +1,16 @@
 from flask import Flask
 from pymongo import MongoClient
+import os
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 
+# Load environment variables
+load_dotenv()
+
 # MongoDB connection
-client = MongoClient('mongodb+srv://mathiasmendozavargas1403:Itunes1403@users.rnvh68b.mongodb.net/?retryWrites=true&w=majority')
+mongo_url = os.getenv("MONGO_URL")
+client = MongoClient(mongo_url)
 db = client['users']
 collection = db['credentials']
 
