@@ -8,7 +8,6 @@ import Sidebar from '../components/sidebar';
 
 
 export default function Home() {
-    const [selectedLocation,  setSelectedLocation] = useState<string | null>(null);
 
     return (
         <div>
@@ -17,7 +16,7 @@ export default function Home() {
             </Head>
             <main className='w-100 flex'>
                 {/* Components will go here */}
-                <Sidebar selectedLocation={selectedLocation} setSelectedLocation={setSelectedLocation} />
+                <Sidebar />
             </main>
         </div>
     )
