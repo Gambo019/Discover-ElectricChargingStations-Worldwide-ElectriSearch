@@ -68,7 +68,7 @@ function Navbar() {
               <li className='mr-6' key={index}>
                 <Link
                   href={link}
-                  className="flex items-center py-2 px-3 gap-1 text-gray-100 hover:text-indigo-500 rounded md:hover:bg-transparent md:p-0  "
+                  className="flex items-center py-2 px-3 gap-1 text-gray-100 hover:text-amber-500 rounded md:hover:bg-transparent md:p-0  "
                 >
                   {icon}
                   {key}
