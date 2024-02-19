@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 // components
 import Sidebar from '../components/sidebar';
+import MapComponent from '../components/map';
 
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
             <main className='w-100 flex'>
                 {/* Components will go here */}
                 <Sidebar />
+                <MapComponent apiKey='keywillgohere'/>
             </main>
         </div>
     )
