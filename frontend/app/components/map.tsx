@@ -1,32 +1,40 @@
-import React from 'react';
-import { GoogleMap, LoadScript } from '@react-google-maps/api';
+'use_client'
 
-const containerStyle = {
-  width: '400px',
-  height: '400px'
-};
+import React, { useRef, useEffect } from 'react';
+import { Loader } from '@googlemaps/js-api-loader';
 
-const center = {
-  lat: -34.397,
-  lng: 150.644
-};
+export default function MapComponent() {
+  const mapRef = useRef<HTMLDivElement>(null);
 
-interface MapComponentProps {
-  apiKey: string;
+  useEffect(() => {
+    const initMap = async () => {
+      const loader = new Loader({
+        apiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
+        version: 'weekly',
+      });
+
+      await loader.load();
+
+      const { Map } = await loader.importLibrary('maps')
+
+      const position = {
+        lat: 49.283056,
+        lng: -123.116226,
+      };
+
+      const mapOptions: google.maps.MapOptions = {
+        center: position,
+        zoom: 17,
+        mapId: 'MY_NEXTJS_MAPID',
+      };
+
+      const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
+    };
+    console.log(process.env.NEXT_PUBLIC_MAPS_API_KEY as string);
+    
+
+    initMap();
+  }, []);
+
+  return <div style={{ height: '600px' }} ref={mapRef}></div>;
 }
-
-const MapComponent: React.FC<MapComponentProps> = ({ apiKey }) => {
-  return (
-    <LoadScript googleMapsApiKey={apiKey}>
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-      >
-        {/* Child components, like markers, info windows, etc. will go here. */}
-      </GoogleMap>
-    </LoadScript>
-  );
-}
-
-export default MapComponent;

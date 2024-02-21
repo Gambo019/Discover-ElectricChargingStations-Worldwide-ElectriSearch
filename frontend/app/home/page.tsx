@@ -18,7 +18,7 @@ export default function Home() {
             <main className='w-100 flex'>
                 {/* Components will go here */}
                 <Sidebar />
-                <MapComponent apiKey='keywillgohere'/>
+                <MapComponent />
             </main>
         </div>
     )
