@@ -1,15 +1,18 @@
-'use_client'
+'use client'
 
 import React, { useRef, useEffect } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 
 export default function MapComponent() {
+
   const mapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const initMap = async () => {
+
+    const initMap = async () => {  
+
       const loader = new Loader({
-        apiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY as string,
+        apiKey: 'AIzaSyA7vHOjbPiZraNOgS1crBJWJuZX8K0vp3g',
         version: 'weekly',
       });
 
@@ -28,13 +31,12 @@ export default function MapComponent() {
         mapId: 'MY_NEXTJS_MAPID',
       };
 
-      const map = new Map(mapRef.current as HTMLDivElement, mapOptions);
+      const map = new Map(mapRef.current as HTMLDivElement , mapOptions);
     };
-    console.log(process.env.NEXT_PUBLIC_MAPS_API_KEY as string);
     
 
     initMap();
   }, []);
 
-  return <div style={{ height: '600px' }} ref={mapRef}></div>;
+  return <div style={{ height: '600px' }} ref={mapRef} id='MY_NEXTJS_MAPID'></div>;
 }

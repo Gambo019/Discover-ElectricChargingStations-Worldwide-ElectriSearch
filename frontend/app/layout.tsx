@@ -14,10 +14,6 @@ const Layout = ({ children }: LayoutProps) => {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap" rel="stylesheet" />
-        <script async
-          src="https://maps.googleapis.com/maps/api/js?key=loading=async&callback=initMap">
-        </script>
       </Head>
       <Navbar />
       <div className="flex flex-col w-full flex-1">
