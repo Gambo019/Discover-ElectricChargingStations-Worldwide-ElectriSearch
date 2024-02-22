@@ -14,6 +14,7 @@ const Layout = ({ children }: LayoutProps) => {
       <Head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
       </Head>
       <Navbar />
       <div className="flex flex-col w-full flex-1">

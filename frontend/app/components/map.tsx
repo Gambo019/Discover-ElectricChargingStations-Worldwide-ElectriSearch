@@ -1,42 +1,39 @@
-'use client'
+import { useLoadScript, GoogleMap } from '@react-google-maps/api';
+import { useMemo } from 'react';
 
-import React, { useRef, useEffect } from 'react';
-import { Loader } from '@googlemaps/js-api-loader';
+const MapComponent = () => {
+  const libraries = useMemo(() => ['places'], []);
+  const mapCenter = useMemo(
+    () => ({ lat: 27.672932021393862, lng: 85.31184012689732 }),
+    []
+  );
 
-export default function MapComponent() {
+  const mapOptions = useMemo(
+    () => ({
+      disableDefaultUI: true,
+      clickableIcons: true,
+      scrollwheel: false,
+      mapTypeId: "terrain",
+    }),
+    []
+  );
+  
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: 'YOUR_API_KEY',
+    libraries: libraries as any,
+  });
 
-  const mapRef = useRef<HTMLDivElement>(null);
+  if (!isLoaded) return <div>Loading...</div>;
 
-  useEffect(() => {
+  return (
+    <GoogleMap
+      options={mapOptions}
+      zoom={14}
+      center={mapCenter}
+      mapContainerStyle={{ width: '800px', height: '800px' }}
+      onLoad={() => console.log('Map Component Loaded...')}
+    />
+  );
+};
 
-    const initMap = async () => {  
-
-      const loader = new Loader({
-        apiKey: 'AIzaSyA7vHOjbPiZraNOgS1crBJWJuZX8K0vp3g',
-        version: 'weekly',
-      });
-
-      await loader.load();
-
-      const { Map } = await loader.importLibrary('maps')
-
-      const position = {
-        lat: 49.283056,
-        lng: -123.116226,
-      };
-
-      const mapOptions: google.maps.MapOptions = {
-        center: position,
-        zoom: 17,
-        mapId: 'MY_NEXTJS_MAPID',
-      };
-
-      const map = new Map(mapRef.current as HTMLDivElement , mapOptions);
-    };
-    
-
-    initMap();
-  }, []);
-
-  return <div style={{ height: '600px' }} ref={mapRef} id='MY_NEXTJS_MAPID'></div>;
-}
+export default MapComponent;
