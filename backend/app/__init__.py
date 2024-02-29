@@ -14,4 +14,4 @@ client = MongoClient(mongo_url)
 db = client['users']
 collection = db['credentials']
 
-from app import routes
+from app.api import routes
