@@ -5,7 +5,9 @@ from flask import request, redirect, url_for, flash
 @auth_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        return 'Yeah bby'
+        # Get the form data
+        username = request.form.get('username')
+        password = request.form.get('password')
     
     return redirect(url_for('/'))
 
