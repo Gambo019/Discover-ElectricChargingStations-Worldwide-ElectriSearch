@@ -10,8 +10,8 @@ load_dotenv()
 
 # MongoDB connection
 mongo_url = os.getenv("MONGO_URL")
-client = MongoClient(mongo_url)
-db = client['users']
+mongo = MongoClient(mongo_url)
+db = mongo['users']
 collection = db['credentials']
 
 from app.api import routes
