@@ -63,5 +63,9 @@ def signUp():
 @auth_blueprint.route("/logout")
 def logout():
     # remove the username from the session if it's there
-    flash("You have been logged out.")
-    return redirect(url_for('auth.login'))
+    if session['user']:
+        session['user'] = None
+        flash("You have been logged out.")
+        # redirect user to login page
+        return redirect(url_for('/login'))
+    
