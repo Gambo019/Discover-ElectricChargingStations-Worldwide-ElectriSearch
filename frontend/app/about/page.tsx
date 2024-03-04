@@ -2,11 +2,15 @@
 
 // importing libraries
 import React from "react"
+import { useState,  useEffect } from "react";
 
 // importing assets
 import AboutStation from '../assets/aboutStation.png'
 import ElectriPlanet from '../assets/ElectiPlanet.png'
 import Global from '../assets/global.png'
+
+// services
+import { getHello } from '../../services/api';
 
 // icons
 import { PiMagnifyingGlassDuotone } from "react-icons/pi";
@@ -14,6 +18,24 @@ import { FaChargingStation } from "react-icons/fa6";
 
 
 function About() {
+
+    const [data, setData] = useState<string | null>(null)
+
+    useEffect(() => {
+        let mounted = true;
+    
+        getHello().then((res) => { // Assume `res` has the correct type for your data
+            if (mounted) {
+                setData(res);
+                console.log(res);
+            }
+        });
+    
+        return () => {
+            mounted = false;
+        };
+    }, []); 
+
     return (
         <div className="w-full h-fit bg-amber-500 font-sans">
             {/* Hero Section */}
@@ -21,6 +43,7 @@ function About() {
                 <div className="w-[40%] text-left mb-20">
                     <p className="text-black text-md italic mb-2">''The best Electric Search Network</p>
                     <h1 className="text-6xl italic text-black">Find your nearest Electric Charge Station</h1>
+                    <p className="text-black text-md italic mb-2">{data}</p>
                     <button type="button" className="text-white bg-indigo-700 hover:bg-indigo-800 flex items-center gap-1 focus:ring-4 focus:outline-none hover:scale-105 focus:ring-blue-300 font-medium rounded-lg text-sm mt-5 px-4 h-10 text-center"><FaChargingStation /> Find Station</button>
                 </div>
                 <div className="w-[60%]">

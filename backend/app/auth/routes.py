@@ -1,7 +1,7 @@
 from . import auth_blueprint
 from flask import request, session, redirect, url_for, flash
 from werkzeug.security  import generate_password_hash, check_password_hash
-from app import mongo
+from . import mongo
 
 
 # LOGIN ROUTE
@@ -25,6 +25,8 @@ def login():
             
     
     return redirect(url_for('/auth/login'))
+
+
 
 # SIGNUP ROUTE
 @auth_blueprint.route('/signup', methods=['GET','POST'])
@@ -68,4 +70,9 @@ def logout():
         flash("You have been logged out.")
         # redirect user to login page
         return redirect(url_for('/login'))
+    
+    
+@auth_blueprint.route('/getHello', methods=['GET'])
+def get_init():
+    return '<h1>Welcome</h1>'
     
