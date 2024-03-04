@@ -2,8 +2,10 @@ from flask import Flask
 from pymongo import MongoClient
 import os
 from dotenv import load_dotenv
+from app.auth import auth_blueprint
 
 app = Flask(__name__)
+app.register_blueprint(auth_blueprint)
 
 # Load environment variables
 load_dotenv()
