@@ -16,7 +16,7 @@ import { getHello } from '../../services/api';
 import { PiMagnifyingGlassDuotone } from "react-icons/pi";
 import { FaChargingStation } from "react-icons/fa6";
 
-
+ 
 function About() {
 
     const [data, setData] = useState<string | null>(null)

@@ -2,6 +2,7 @@ from app import app, collection
 from flask import request, jsonify
 from bson.objectid import ObjectId
 
+
 # CRUD operations
 
 # Create
