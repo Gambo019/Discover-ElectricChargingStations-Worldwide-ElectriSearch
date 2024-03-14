@@ -1,6 +1,9 @@
 import { url } from 'inspector'
 import React from 'react'
 
+// react icons
+import { IoLocationSharp } from "react-icons/io5";
+
 
 
 export default function Profile(){
@@ -12,18 +15,26 @@ export default function Profile(){
             </div>
             
             {/* Main Profile Card */}
-            <div className="w-3/4 text-center relative z-10 m-auto mt-[-90px] bg-amber-500 rounded-lg">
-                <div className="py-4">
+            <div className="w-2/3 text-center relative z-10 m-auto mt-[-90px] bg-amber-500 rounded-lg">
+                <div className="py-8">
                     {/* Card Head */}
-                    <div className="w-[85%] m-auto items-end flex mt-[-90px] pb-20">
+                    <div className="w-[90%] m-auto items-end flex mt-[-130px] pb-5">
                         <div className="w-1/3">
                             
                         </div>
                         <div className="w-1/3">
-                            <img src="https://avatars.githubusercontent.com/u/84240367?v=4" className='w-[150px] m-auto rounded-full'/>
+                            <img src="https://avatars.githubusercontent.com/u/84240367?v=4" className='w-[190px] m-auto rounded-full'/>
                         </div>
-                        <div className="w-1/3 text-right">
+                        <div className="w-1/3 text-right mb-[18px]">
                             <button className='bg-black text-md text-white rounded-md px-6 py-2'>Edit Profile</button>
+                        </div>
+                    </div>
+                    {/* User Info */}
+                    <div className="w-full inline text-center">
+                        <h1 className='text-black text-2xl font-semibold'>Mathias Mendoza</h1>
+                        <div className="inline-flex font-semibold items-center pt-2">
+                            <IoLocationSharp />
+                            <p className="ml-2 text-gray-800">Vancouver, Canada</p>
                         </div>
                     </div>
                 </div>
