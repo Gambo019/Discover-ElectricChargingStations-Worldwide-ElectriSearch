@@ -5,7 +5,6 @@ import React from 'react'
 import { IoLocationSharp } from "react-icons/io5";
 
 
-
 export default function Profile(){
     return (
         <div className="w-full min-h-screen bg-neutral-900 bg-cover">
