@@ -41,7 +41,7 @@ function Navbar() {
       icon: <BsFillInfoCircleFill />,
     },
     Profile: {
-      link: String('/profile'),
+      link: String('/profile/123'),
       icon: <FaUserCircle />,
     },
   };
