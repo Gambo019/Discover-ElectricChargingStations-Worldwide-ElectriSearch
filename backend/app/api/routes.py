@@ -15,7 +15,7 @@ def create():
 # Read
 @app.route('/', methods=['GET'])
 def get_init():
-    return '<h1>Welcome</h1>'
+    return 'Hello World!!!'
  
 @app.route('/read/<id>', methods=['GET'])
 def read(id):

@@ -88,5 +88,5 @@ def logout():
     
 @auth_blueprint.route('/getHello', methods=['GET'])
 def get_init():
-    return '<h1>Welcome</h1>'
+    return 'Auth Blueprint!!!!'
     
