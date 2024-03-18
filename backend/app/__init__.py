@@ -7,6 +7,8 @@ from app.auth import auth_blueprint
 
 app = Flask(__name__)
 CORS(app)
+
+# Register Blueprints
 app.register_blueprint(auth_blueprint)
 
 # Load environment variables
