@@ -16,7 +16,7 @@ def create():
 @app.route('/', methods=['GET'])
 def get_init():
     return '<h1>Welcome</h1>'
-
+ 
 @app.route('/read/<id>', methods=['GET'])
 def read(id):
     document = collection.find_one({'_id': ObjectId(id)})
