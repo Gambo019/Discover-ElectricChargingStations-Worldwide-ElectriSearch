@@ -1,7 +1,7 @@
 'use client';
 
 // libraries
-import React from 'react'
+import React, { useState } from 'react'
 
 // assets
 import CarStation from '../assets/CarStation.png'
@@ -11,36 +11,33 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 
 function Login () {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
 
-  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-
-    try {
-      const response = await fetch('http://localhost:8080/auth/login', {
-        method: 'POST',
-      });
-  
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const data = await response.json();
-      console.log("Login successful:", data);
-    } catch (error) {
-      console.error("Error during login:", error);
+  const handleLogin = async () => {
+    // Make Post API call request to trigger backend login function
+    const response = await fetch('http://127.0.0.1:5000/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    })
+    if (response.ok){
+      console.log(email);
+      console.log(password);
+      
+      console.log('It worked');
+      
     }
-    console.log("Hi");
-  };
+  }
   
 
   return (
     <div className='w-full min-h-screen bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
-        <form onClick={(e) => {
-          e.preventDefault()
-          handleLogin
-        }} className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
+        <form className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
           <h1 className='text-left text-2xl font-bold text-gray-100'>Login to your Account</h1>
           <div className='px-1'>
             <div className='w-full block lg:flex justify-between mt-5'>
@@ -67,14 +64,18 @@ function Login () {
             <h4 className='mt-2 text-left text-gray-100 mt-0'>Email</h4>
             <input
               type="email"
-              name='email'
+              id='email'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Enter you email'
             />
             <h4 className='mt-2 text-left text-gray-100'>Password</h4>
             <input
               type="password"
-              name='password'
+              id='password'
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='··········'
             />
@@ -89,6 +90,10 @@ function Login () {
               >Forgot Password?</a>
             </div>
             <button
+              onClick={(e) => {
+                e.preventDefault()
+                handleLogin()
+              }}
               className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'
             >
               Sign in to your Account

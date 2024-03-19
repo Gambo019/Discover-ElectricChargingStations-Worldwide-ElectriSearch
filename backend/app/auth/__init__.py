@@ -12,33 +12,37 @@ load_dotenv()
 mongo_url = os.getenv("MONGO_URL")
 mongo = MongoClient(mongo_url)
 db = mongo['users']
-collection = db['credentials']
 
 
 # Authentication Blueprint
 auth_blueprint = Blueprint('auth', __name__)
 
 # LOGIN ROUTE
-@auth_blueprint.route('/login', methods=['GET', 'POST'])
+@auth_blueprint.route('/login', methods=['POST'])
 def login():
     if request.method == 'POST':
         # Get the form data
-        username = request.form.get('username')
-        password = request.form.get('password')
-        
-        # Find User in the db
-        user = mongo.credentials.find_one({'username': username})
-        
-        #check password
-        if user and check_password_hash(user['password'], password):
-            # Successful login
-            session['user'] = str(user['_id'])
-            return redirect(url_for('/'))
-        else:
-            flash("Invalid credentials")
+        data = request.json
+        if data:
+            email = data["email"]
+            password = data['password']
             
-    
-    return redirect(url_for('/auth/login'))
+            # Find User in the db
+            user = db.credentials.find_one({'email': email})
+            print(user)
+            
+            #check password
+            if user and check_password_hash(user['password'], password):
+                # Successful login
+                session['user'] = str(user['_id'])
+                return redirect(url_for('/'))
+            else:
+                flash("Invalid credentials")
+        
+        
+        
+    return 'Hi there'
+
 
 
 
@@ -54,7 +58,7 @@ def signUp():
         # check if both passwords match
         if password == verifyPassword:
             # check if user already exists
-            user_exists = mongo.credentials.find_one({email:  email})
+            user_exists = db.credentials.find_one({email:  email})
             if user_exists:
                 flash('Username already exists.')
                 return redirect(url_for('/signup'))
@@ -62,7 +66,7 @@ def signUp():
             # if user doesn't exists hash password and create user
             hashed_password = generate_password_hash(password, method='sha256')
             
-            mongo.credentials.insert_one({
+            db.credentials.insert_one({
                 'email': email,
                 'password': hashed_password
             })
