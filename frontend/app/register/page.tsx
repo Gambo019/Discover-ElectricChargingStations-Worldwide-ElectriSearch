@@ -19,6 +19,7 @@ function Register() {
       const response = await fetch('http://127.0.0.1:5000/signup', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ email, password, repeatPassword})
       })
       if(response.ok){
         // if response if ok send user to login page
@@ -66,6 +67,7 @@ function Register() {
             <h4 className='mt-2 text-left text-gray-100 mt-0'>Setup Email</h4>
             <input
               type="email"
+              id='email'
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Enter you email'
               onChange={e => setEmail(e.target.value)}
@@ -74,6 +76,7 @@ function Register() {
             <h4 className='mt-2 text-left text-gray-100'>Create Password</h4>
             <input
               type="password"
+              id='password'
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Set up new Password'
               onChange={e => setPassword(e.target.value)}
@@ -81,6 +84,7 @@ function Register() {
             />
             <input
               type="password"
+              id='repeat_password'
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Confirm Password'
               onChange={e => setRepeatPassword(e.target.value)}

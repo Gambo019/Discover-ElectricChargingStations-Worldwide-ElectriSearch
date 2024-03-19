@@ -4,6 +4,7 @@ from flask import Blueprint
 import os
 from dotenv import load_dotenv
 from pymongo import MongoClient
+import bcrypt
 
 # Load environment variables
 load_dotenv()
@@ -25,19 +26,23 @@ def login():
     if data:
         email = data["email"]
         password = data['password']
+        print(email)
+        print(password)
         
         # Find User in the db
         user = db.credentials.find_one({'email': email})
-        print(user)
+        
         
         #check password
-        if user and check_password_hash(user['password'], password):
-            # Successful login
-            print('Good Password')
-            session['user'] = str(user['_id'])
-            return redirect(url_for('/'))
-        else:
-            flash("Invalid credentials")
+        if user:
+            hashed_pw = user['password']
+            if bcrypt.checkpw(password.encode('utf8'), hashed_pw):
+                # Successful login
+                print('Good Password')
+                session['user'] = str(user['_id'])
+                return redirect(url_for('/'))
+            else:
+                print('Hash didnt work')
     
 
 
@@ -47,12 +52,18 @@ def login():
 @auth_blueprint.route('/signup', methods=['POST'])
 def signUp():
     # Get form data
-    email = request.form.get('email')
-    password = request.form.get('password')
-    verifyPassword = request.form.get('verifyPassword')
+    data = request.json
+    
+    email = data['email']
+    password = data['password']
+    repeatPassword = data['repeatPassword']
+    print(email)
+    print(password)
+    print(repeatPassword)
     
     # check if both passwords match
-    if password == verifyPassword:
+    if password == repeatPassword:
+        print('match')
         # check if user already exists
         user_exists = db.credentials.find_one({email:  email})
         if user_exists:
@@ -60,7 +71,7 @@ def signUp():
             return 'User already exist'
         
         # if user doesn't exists hash password and create user
-        hashed_password = generate_password_hash(password, method='sha256')
+        hashed_password = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
         
         db.credentials.insert_one({
             'email': email,
@@ -69,7 +80,6 @@ def signUp():
         
         
         print('User has been created')
-        return redirect(url_for('.login'))
             
                 
 # LOGOUT ROUTE
