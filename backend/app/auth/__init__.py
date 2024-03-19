@@ -56,8 +56,8 @@ def signUp():
         # check if user already exists
         user_exists = db.credentials.find_one({email:  email})
         if user_exists:
-            flash('Username already exists.')
-            return redirect(url_for('/signup'))
+            print('User already exist')
+            return 'User already exist'
         
         # if user doesn't exists hash password and create user
         hashed_password = generate_password_hash(password, method='sha256')
@@ -68,7 +68,7 @@ def signUp():
         })
         
         
-        flash('Account created successfully! Please login.')
+        print('User has been created')
         return redirect(url_for('.login'))
             
                 

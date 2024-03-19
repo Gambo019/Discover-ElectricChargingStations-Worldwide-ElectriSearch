@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, {useState} from 'react'
 
 // assets
 import CarStation from '../assets/CarStation.png'
@@ -8,6 +10,31 @@ import { FcGoogle } from "react-icons/fc";
 import { FaApple } from "react-icons/fa";
 
 function Register() {
+  const [email, setEmail] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [repeatPassword, setRepeatPassword] = useState<string>('')
+
+  const createUser = async () => {
+    if(password === repeatPassword) {
+      const response = await fetch('http://127.0.0.1:5000/signup', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+      })
+      if(response.ok){
+        // if response if ok send user to login page
+        window.location.replace('/login')
+
+      } else{
+        // Will add  error handling later on and also backend response
+        alert('Something Wrong happend! Try again later')
+      }
+
+    } else{
+      alert('Passwords do not match!')
+    }
+    
+  }
+
   return (
     <div className='w-full min-h-screen bg-amber-500 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
@@ -41,17 +68,23 @@ function Register() {
               type="email"
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Enter you email'
+              onChange={e => setEmail(e.target.value)}
+              value={email}
             />
             <h4 className='mt-2 text-left text-gray-100'>Create Password</h4>
             <input
               type="password"
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Set up new Password'
+              onChange={e => setPassword(e.target.value)}
+              value={password}
             />
             <input
               type="password"
               className='w-[99%] h-10 m-auto px-3 my-2 rounded-lg bg-gray-700 text-gray-200 focus:outline-none focus:border-indigo-700 focus:border-2'
               placeholder='Confirm Password'
+              onChange={e => setRepeatPassword(e.target.value)}
+              value={repeatPassword}
             />
             <div className='w-full flex items-center mt-3 justify-between'>
               <div className='flex gap-2 items-center text-left'>
@@ -59,7 +92,12 @@ function Register() {
                 <p className='text-gray-100 text-sm'>Show Password</p>
               </div>
             </div>
-            <button className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'>
+            <button
+              onClick={e => {
+                e.preventDefault()
+                createUser()
+              }}
+              className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'>
               Create New Account
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
