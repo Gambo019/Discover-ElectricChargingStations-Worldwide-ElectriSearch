@@ -24,6 +24,7 @@ function Register() {
       if(response.ok){
         // if response if ok send user to login page
         window.location.replace('/login')
+        
 
       } else{
         // Will add  error handling later on and also backend response

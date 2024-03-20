@@ -1,6 +1,9 @@
 import { useLoadScript, GoogleMap } from '@react-google-maps/api';
 import { useMemo } from 'react';
 
+// import maps api key from env
+const NEXT_PUBLIC_GOOGLE_MAPS_KEY = process.env.GOOGLE_MAPS_API
+
 const MapComponent = () => {
   const libraries = useMemo(() => ['places'], []);
   const mapCenter = useMemo(
@@ -19,7 +22,7 @@ const MapComponent = () => {
   );
   
   const { isLoaded } = useLoadScript({
-    googleMapsApiKey: 'YOUR_API_KEY',
+    googleMapsApiKey: NEXT_PUBLIC_GOOGLE_MAPS_KEY,
     libraries: libraries as any,
   });
 
@@ -30,9 +33,8 @@ const MapComponent = () => {
       options={mapOptions}
       zoom={14}
       center={mapCenter}
-      mapContainerStyle={{ width: '800px', height: '800px' }}
-      onLoad={() => console.log('Map Component Loaded...')}
-    />
+      mapContainerStyle={{ width: '100%', height: '800px'}}
+      onLoad={() => console.log('Map Component Loaded...')} />
   );
 };
 
