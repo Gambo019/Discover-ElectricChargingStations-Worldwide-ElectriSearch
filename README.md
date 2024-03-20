@@ -20,6 +20,7 @@
    <ul>
         <li><strong>Frontend:</strong> NextJs, ReactJs, TypeScript, Tailwind CSS</li>
         <li><strong>Backend:</strong> Python, Flask, MongoDB</li>
+        <li><strong>APIs currently used on the App:</strong> Google Maps API, OpenElectricChargeStationAPI</li>
     </ul>
 
    <h2>🧑‍💻 Getting Started</h2>
