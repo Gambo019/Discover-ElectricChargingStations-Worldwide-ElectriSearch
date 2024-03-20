@@ -7,7 +7,7 @@ const NEXT_PUBLIC_GOOGLE_MAPS_KEY = process.env.GOOGLE_MAPS_API
 const MapComponent = () => {
   const libraries = useMemo(() => ['places'], []);
   const mapCenter = useMemo(
-    () => ({ lat: 27.672932021393862, lng: 85.31184012689732 }),
+    () => ({ lat: 49.26083, lng:  -123.11389}),
     []
   );
 
