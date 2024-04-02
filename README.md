@@ -17,6 +17,8 @@
         <li><strong>Database:</strong> Contribute to building a comprehensive database of electric charging stations.</li>
     </ul>
 
+<img src='https://ik.imagekit.io/r67xuhpwk/Screenshot%202024-04-02%20143720.png?updatedAt=1712094202920' width='100%' />
+
   <h2>🛠️ Tech Stack</h2>
 
    <ul>
