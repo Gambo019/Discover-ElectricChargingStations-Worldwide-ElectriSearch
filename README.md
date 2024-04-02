@@ -7,6 +7,8 @@
    <h2>⚡ Overview</h2>
 <p>ElectriSearch is a cross-platform application built on NextJs, ReactJs, TypeScript, and Tailwind CSS for the frontend, while the backend is driven by Python and MongoDB. The project aims to provide users with a seamless experience for finding electric charging stations globally. Users can create profiles, contribute to the global charging network, and actively participate in building our extensive database of electric charging stations around the world.</p>
 
+<img src='https://ik.imagekit.io/r67xuhpwk/Screenshot%202024-04-02%20143647.png?updatedAt=1712094203467' width='100%' />
+
    <h2>🔥 Features</h2>
 <ul>
         <li><strong>Search:</strong> Effortlessly find electric charging stations globally.</li>
