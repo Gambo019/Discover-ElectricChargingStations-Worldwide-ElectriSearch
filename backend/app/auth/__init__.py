@@ -57,9 +57,6 @@ def signUp():
     email = data['email']
     password = data['password']
     repeatPassword = data['repeatPassword']
-    print(email)
-    print(password)
-    print(repeatPassword)
     
     # check if both passwords match
     if password == repeatPassword:
