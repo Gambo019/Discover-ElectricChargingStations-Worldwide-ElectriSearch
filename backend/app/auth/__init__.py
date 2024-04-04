@@ -67,16 +67,17 @@ def signUp():
             print('User already exist')
             return 'User already exist'
         
-        # if user doesn't exists hash password and create user
-        hashed_password = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
-        
-        db.credentials.insert_one({
-            'email': email,
-            'password': hashed_password
-        })
-        
-        
-        print('User has been created')
+        else:
+            # if user doesn't exists hash password and create user
+            hashed_password = bcrypt.hashpw(password.encode('utf8'), bcrypt.gensalt())
+            
+            db.credentials.insert_one({
+                'email': email,
+                'password': hashed_password
+            })
+            
+            
+            print('User has been created')
             
                 
 # LOGOUT ROUTE

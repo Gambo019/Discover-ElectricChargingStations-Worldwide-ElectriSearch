@@ -21,9 +21,11 @@ function Register() {
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ email, password, repeatPassword})
       })
-      if(response.ok){
+      if(response){
         // if response if ok send user to login page
-        window.location.replace('/login')
+        data = response.text()
+        
+        
         
 
       } else{
