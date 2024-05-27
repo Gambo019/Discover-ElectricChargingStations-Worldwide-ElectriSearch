@@ -23,8 +23,8 @@ function Register() {
       })
       if(response){
         // if response if ok send user to login page
-        data = response.text()
         
+
         
         
 
