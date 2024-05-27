@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoLocationSharp } from "react-icons/io5";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { MdEmail, MdPhone, MdEdit, MdMessage } from "react-icons/md";
 
 export default function Profile() {
     return (
@@ -28,10 +28,12 @@ export default function Profile() {
                             />
                         </div>
                         <div className="w-full sm:w-1/3 flex justify-center sm:justify-end space-x-2 mt-4 sm:mt-0">
-                            <button className="bg-black text-md text-white rounded-md px-6 py-2 hover:bg-gray-800 transition duration-300">
+                            <button className="flex items-center bg-black text-md text-white rounded-md px-4 py-2 hover:bg-gray-800 transition duration-300">
+                                <MdEdit className="mr-2" />
                                 Edit Profile
                             </button>
-                            <button className="bg-blue-600 text-md text-white rounded-md px-6 py-2 hover:bg-blue-500 transition duration-300">
+                            <button className="flex items-center bg-blue-600 text-md text-white rounded-md px-4 py-2 hover:bg-blue-500 transition duration-300">
+                                <MdMessage className="mr-2" />
                                 Message
                             </button>
                         </div>
