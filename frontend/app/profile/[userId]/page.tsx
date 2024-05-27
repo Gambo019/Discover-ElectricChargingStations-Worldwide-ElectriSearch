@@ -1,5 +1,6 @@
 import React from 'react';
 import { IoLocationSharp } from "react-icons/io5";
+import { MdEmail, MdPhone } from "react-icons/md";
 
 export default function Profile() {
     return (
@@ -39,6 +40,14 @@ export default function Profile() {
                         <div className="inline-flex font-semibold items-center pt-2">
                             <IoLocationSharp className="text-gray-800" />
                             <p className="ml-2 text-gray-800">Vancouver, Canada</p>
+                        </div>
+                        <div className="inline-flex font-semibold items-center pt-2">
+                            <MdEmail className="text-gray-800" />
+                            <p className="ml-2 text-gray-800">mathias@example.com</p>
+                        </div>
+                        <div className="inline-flex font-semibold items-center pt-2">
+                            <MdPhone className="text-gray-800" />
+                            <p className="ml-2 text-gray-800">+1 234 567 890</p>
                         </div>
                     </div>
                 </div>
