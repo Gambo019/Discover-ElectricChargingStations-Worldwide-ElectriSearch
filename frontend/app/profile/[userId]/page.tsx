@@ -15,7 +15,7 @@ export default function Profile() {
             </div>
             
             {/* Main Profile Card */}
-            <div className="w-full sm:w-2/3 text-center relative z-10 m-auto mt-[-90px] bg-amber-500 rounded-lg">
+            <div className="w-full sm:w-2/3 text-center relative z-10 m-auto mt-[-90px] bg-amber-500 rounded-lg shadow-lg">
                 <div className="py-8 px-4 sm:px-8">
                     {/* Card Head */}
                     <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between mt-[-130px] pb-5">
@@ -23,13 +23,16 @@ export default function Profile() {
                         <div className="w-48 sm:w-1/3">
                             <img
                                 src="https://avatars.githubusercontent.com/u/84240367?v=4"
-                                className="w-[190px] m-auto rounded-full"
+                                className="w-[190px] m-auto rounded-full border-4 border-white"
                                 alt="Profile"
                             />
                         </div>
-                        <div className="w-full sm:w-1/3 text-center sm:text-right mt-4 sm:mt-0">
-                            <button className="bg-black text-md text-white rounded-md px-6 py-2">
+                        <div className="w-full sm:w-1/3 flex justify-center sm:justify-end space-x-2 mt-4 sm:mt-0">
+                            <button className="bg-black text-md text-white rounded-md px-6 py-2 hover:bg-gray-800 transition duration-300">
                                 Edit Profile
+                            </button>
+                            <button className="bg-blue-600 text-md text-white rounded-md px-6 py-2 hover:bg-blue-500 transition duration-300">
+                                Message
                             </button>
                         </div>
                     </div>
@@ -37,18 +40,18 @@ export default function Profile() {
                     {/* User Info */}
                     <div className="w-full text-center">
                         <h1 className="text-black text-2xl font-semibold">Mathias Mendoza</h1>
-                        <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 pt-2">
-                            <div className="flex items-center">
-                                <IoLocationSharp className="text-gray-800" />
-                                <p className="ml-2 text-gray-800">Vancouver, Canada</p>
+                        <div className="flex flex-col sm:flex-row justify-center items-center sm:justify-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-6 pt-4">
+                            <div className="flex items-center space-x-2">
+                                <IoLocationSharp className="text-gray-800 text-xl" />
+                                <p className="text-gray-800">Vancouver, Canada</p>
                             </div>
-                            <div className="flex items-center">
-                                <MdEmail className="text-gray-800" />
-                                <p className="ml-2 text-gray-800">mathias@example.com</p>
+                            <div className="flex items-center space-x-2">
+                                <MdEmail className="text-gray-800 text-xl" />
+                                <p className="text-gray-800">mathias@example.com</p>
                             </div>
-                            <div className="flex items-center">
-                                <MdPhone className="text-gray-800" />
-                                <p className="ml-2 text-gray-800">+1 234 567 890</p>
+                            <div className="flex items-center space-x-2">
+                                <MdPhone className="text-gray-800 text-xl" />
+                                <p className="text-gray-800">+1 234 567 890</p>
                             </div>
                         </div>
                     </div>
