@@ -1,6 +1,7 @@
 import React from 'react';
 import { IoLocationSharp } from "react-icons/io5";
 import { MdEmail, MdPhone, MdEdit, MdMessage } from "react-icons/md";
+import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Profile() {
     return (
@@ -28,11 +29,11 @@ export default function Profile() {
                             />
                         </div>
                         <div className="w-full sm:w-1/3 flex justify-center sm:justify-end space-x-2 mt-4 sm:mt-0">
-                            <button className="flex items-center bg-black text-md text-white rounded-md px-4 py-2 hover:bg-gray-800 transition duration-300">
+                            <button className="flex items-center bg-black text-md text-white rounded-md px-4 py-2 hover:bg-gray-800 transition duration-300" aria-label="Edit Profile">
                                 <MdEdit className="mr-2" />
                                 Edit Profile
                             </button>
-                            <button className="flex items-center bg-blue-600 text-md text-white rounded-md px-4 py-2 hover:bg-blue-500 transition duration-300">
+                            <button className="flex items-center bg-blue-600 text-md text-white rounded-md px-4 py-2 hover:bg-blue-500 transition duration-300" aria-label="Message">
                                 <MdMessage className="mr-2" />
                                 Message
                             </button>
@@ -55,6 +56,25 @@ export default function Profile() {
                                 <MdPhone className="text-gray-800 text-xl" />
                                 <p className="text-gray-800">+1 234 567 890</p>
                             </div>
+                        </div>
+                        
+                        {/* Additional User Info */}
+                        <div className="mt-4 text-center">
+                            <p className="text-gray-800">Software Engineer at Tech Company</p>
+                            <p className="text-gray-800">Passionate about creating impactful software solutions.</p>
+                        </div>
+
+                        {/* Social Media Links */}
+                        <div className="mt-4 flex justify-center space-x-4">
+                            <a href="https://linkedin.com/in/mathias" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 transition duration-300">
+                                <FaLinkedin className="text-2xl" />
+                            </a>
+                            <a href="https://twitter.com/mathias" aria-label="Twitter" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 transition duration-300">
+                                <FaTwitter className="text-2xl" />
+                            </a>
+                            <a href="https://github.com/mathias" aria-label="GitHub" target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-600 transition duration-300">
+                                <FaGithub className="text-2xl" />
+                            </a>
                         </div>
                     </div>
                 </div>
