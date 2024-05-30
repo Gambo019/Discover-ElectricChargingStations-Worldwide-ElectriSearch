@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { FaSearchengin } from "react-icons/fa6";
+import { FaSearch } from "react-icons/fa";
 import Image from 'next/image';
-
+import PropTypes from 'prop-types';
 
 // assets
-import LocationExample from '../assets/locationExample.png'
+import LocationExample from '../assets/locationExample.png';
 
 interface ChargingStation {
     name: string;
@@ -13,52 +13,83 @@ interface ChargingStation {
     numberOfChargers: number;
 }
 
-interface SidebarProps{
+interface SidebarProps {
+    stations: ChargingStation[];
 }
 
-export default function Sidebar() {
+const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
     };
 
+    const filteredStations = stations.filter(station =>
+        station.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
-        <div className='w-[25%] min-h-screen px-3 pt-7 bg-gray-900 text-white flex flex-col'>
-            <div className="flex items-center bg-gray-800 p-2 rounded-md">
+        <div className='w-[25%] min-h-screen px-4 py-7 bg-gray-900 text-white flex flex-col'>
+            {/* Search Bar */}
+            <div className="flex items-center bg-gray-800 p-2 rounded-md mb-6">
                 <input 
                     type="text" 
                     placeholder="Search..." 
                     value={searchTerm}
                     onChange={handleSearchChange}
-                    className="bg-gray-800 text-white placeholder-gray-500 outline-none w-full"
+                    className="bg-gray-800 text-white placeholder-gray-500 outline-none w-full p-2"
                 />
                 <button
                     className="ml-2 px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold rounded-md"
+                    aria-label="Search"
                 >
-                    <FaSearchengin />
+                    <FaSearch />
                 </button>
             </div>
-            {/* {selectedStation ? (
-                
-            ) : (
-                <p>No station selected</p>
-            )} */}
-            <div className="flex flex-col gap-y-1 px-1 mt-6">
-                <h2 className="text-lg font-semibold">Graville Station</h2>
-                <Image src={LocationExample} width={300} className='w-full rounded-md mt-3' alt='LocationPhoto'/>
-                <div className='flex flex-col mt-4 gap-y-1'>
-                    <h2 className='text-lg font-semibold'>Address</h2>
-                    <p>105 Granville St W, Toronto, ON M6A</p>
-                    <h2 className='text-lg font-semibold mt-1'>Status</h2>
-                    <div className='flex items-center gap-x-1.5'>
-                        <span className=' rounded-[100%] bg-green-600 w-1 h-1'></span>
-                        <p>Available</p>
-                    </div>
-                    <h2 className='text-lg font-semibold mt-1'>Number of Chargers</h2>
-                    <p>6</p>
-                </div>
+
+            {/* Charging Station Details */}
+            <div className="flex flex-col gap-y-6">
+                {filteredStations.length > 0 ? (
+                    filteredStations.map((station, index) => (
+                        <div key={index} className="bg-gray-800 p-4 rounded-md">
+                            <h2 className="text-lg font-semibold mb-3">{station.name}</h2>
+                            <Image src={LocationExample} width={300} height={200} className='w-full rounded-md mb-4' alt={`${station.name} Location`} />
+                            <div className='flex flex-col gap-y-2'>
+                                <div>
+                                    <h3 className='text-md font-semibold'>Address</h3>
+                                    <p>{station.location}</p>
+                                </div>
+                                <div>
+                                    <h3 className='text-md font-semibold'>Status</h3>
+                                    <div className='flex items-center gap-x-2'>
+                                        <span className={`rounded-full w-2 h-2 ${station.status === 'Available' ? 'bg-green-600' : 'bg-red-600'}`}></span>
+                                        <p>{station.status}</p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 className='text-md font-semibold'>Number of Chargers</h3>
+                                    <p>{station.numberOfChargers}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))
+                ) : (
+                    <p>No stations found</p>
+                )}
             </div>
         </div>
     );
-}
+};
+
+Sidebar.propTypes = {
+    stations: PropTypes.arrayOf(
+        PropTypes.shape({
+            name: PropTypes.string.isRequired,
+            location: PropTypes.string.isRequired,
+            status: PropTypes.string.isRequired,
+            numberOfChargers: PropTypes.number.isRequired,
+        })
+    ).isRequired,
+};
+
+export default Sidebar;
