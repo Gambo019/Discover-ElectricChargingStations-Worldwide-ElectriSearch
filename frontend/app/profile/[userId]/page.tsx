@@ -19,7 +19,7 @@ export default function Profile() {
             <div className="w-full sm:w-2/3 text-center relative z-10 m-auto mt-[-90px] bg-amber-500 rounded-lg shadow-lg">
                 <div className="py-8 px-4 sm:px-8">
                     {/* Card Head */}
-                    <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-between mt-[-130px] pb-5">
+                    <div className="flex flex-col sm:flex-row items-end justify-center sm:justify-between mt-[-155px] pb-5">
                         <div className="w-24 sm:w-1/3"></div>
                         <div className="w-48 sm:w-1/3">
                             <img
@@ -28,7 +28,7 @@ export default function Profile() {
                                 alt="Profile"
                             />
                         </div>
-                        <div className="w-full sm:w-1/3 flex justify-center sm:justify-end space-x-2 mt-4 sm:mt-0">
+                        <div className="w-full sm:w-1/3 flex justify-center sm:justify-end space-x-2 sm:mt-0">
                             <button className="flex items-center bg-black text-md text-white rounded-md px-4 py-2 hover:bg-gray-800 transition duration-300" aria-label="Edit Profile">
                                 <MdEdit className="mr-2" />
                                 Edit Profile
