@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
     );
 
     return (
-        <div className='w-[25%] min-h-screen px-4 py-7 bg-gray-900 text-white flex flex-col'>
+        <div className='w-[25%] h-screen px-4 py-7 overflow-y-auto bg-gray-900 text-white flex flex-col'>
             {/* Search Bar */}
             <div className="flex items-center bg-gray-800 p-2 rounded-md mb-6">
                 <input 
