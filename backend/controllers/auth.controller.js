@@ -23,7 +23,6 @@ exports.getLogin = (req, res, next) => {
     }
 }
 
-
 // (POST) Post Login Page
 exports.postLogin = async (req, res, next) => {
     const username = req.body.username
@@ -74,5 +73,3 @@ exports.getSignUp = (req, res) => {
     }
     res.redirect('/auth/signup')
 }
-
-
