@@ -3,7 +3,6 @@
 //////////////////////
 const db = require('../db/connection')
 
-
 module.exports = class User{
     constructor(username, email, password, firstName, lastName, age, gender) {
         this.username = username
