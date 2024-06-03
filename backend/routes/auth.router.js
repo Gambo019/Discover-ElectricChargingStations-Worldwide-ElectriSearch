@@ -1,7 +1,6 @@
 /////////////////
 // User's Router
 /////////////////
-
 const auth_router = require('express').Router()
 
 const {
@@ -13,4 +12,4 @@ const {
 auth_router.route('/login').get(getLogin).post(postLogin)
 auth_router.route('/signup').get(getSignUp)
 
-module.exports = auth_router
+module.exports = auth_router;
