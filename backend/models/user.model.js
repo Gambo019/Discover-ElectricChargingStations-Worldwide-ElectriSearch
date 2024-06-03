@@ -1,4 +1,6 @@
+//////////////////////
 // User Model/Schema
+//////////////////////
 const db = require('../db/connection')
 
 
