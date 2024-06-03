@@ -25,7 +25,7 @@ function Navbar() {
 
   const navLinks: NavLinks = {
     Home: {
-      link: String('/home'),
+      link: String('/'),
       icon: <BsHouseFill />,
     },
     Login: {

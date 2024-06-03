@@ -1,8 +1,11 @@
 import React from 'react'
 
+// Home Component
+import Home from './home/page'
+
 function App() {
   return (
-    <div className='mt-10'>App Main Route</div>
+    <Home/>
   )
 }
 
