@@ -29,7 +29,7 @@ const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
     );
 
     return (
-        <div className='w-[25%] h-screen px-4 py-7 overflow-y-auto bg-gray-900 text-white flex flex-col'>
+        <div className='w-[25%] h-screen px-4 py-7 overflow-y-auto bg-gray-900 text-white flex flex-col custom-scrollbar'>
             {/* Search Bar */}
             <div className="flex items-center bg-gray-800 p-2 rounded-md mb-6">
                 <input 
@@ -77,6 +77,25 @@ const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
                     <p>No stations found</p>
                 )}
             </div>
+            <style jsx>{`
+                .custom-scrollbar::-webkit-scrollbar {
+                    width: 8px;
+                }
+
+                .custom-scrollbar::-webkit-scrollbar-track {
+                    background: #2d3748;
+                }
+
+                .custom-scrollbar::-webkit-scrollbar-thumb {
+                    background-color: #718096;
+                    border-radius: 4px;
+                    border: 2px solid #2d3748;
+                }
+
+                .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                    background-color: #4a5568;
+                }
+            `}</style>
         </div>
     );
 };

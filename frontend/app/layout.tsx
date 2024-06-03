@@ -2,14 +2,15 @@ import 'tailwindcss/tailwind.css';
 import Navbar from './navbar'; 
 import React, { ReactNode } from 'react';
 
+
 interface LayoutProps {
   children: ReactNode;
 }
 
 
-const Layout = ({ children }: LayoutProps) => {
+const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <html lang='en'>
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
