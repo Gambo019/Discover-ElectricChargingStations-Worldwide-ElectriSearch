@@ -1,4 +1,6 @@
+////////////////////
 // Main Server File
+////////////////////
 require('dotenv').config()
 const cors = require('cors')
 const express = require('express')
@@ -8,11 +10,8 @@ const PORT = process.env.PORT
 
 // App
 const app = express()
-
 app.use(cors())
 app.use(express.json())
-
-
 
 ///////////
 // Routes
