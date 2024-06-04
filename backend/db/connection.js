@@ -1,17 +1,17 @@
 ////////////////////////////////
 // Database Connection MongoDb
 ////////////////////////////////
-import { MongoClient, ServerApiVersion } from 'mongodb';
+const { MongoClient, ServerApiVersion } = require('mongodb');
 
 const URI = process.env.MONGO_URI;
 
 const client = new MongoClient(URI, {
     serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-    },
-});
+      version: ServerApiVersion.v1,
+      strict: true,
+      deprecationErrors: true,
+    }
+  });
 
 async function connectToDatabase() {
     try {
@@ -21,7 +21,7 @@ async function connectToDatabase() {
         await client.db('admin').command({ ping: 1 });
         console.log('Pinged your deployment. You have successfully connected to MongoDb!');
     } catch (err) {
-        console.log(`Error connecting to MongoDb: ${err}`);
+        console.log(err);
     }
 }
 
@@ -29,4 +29,4 @@ connectToDatabase();
 
 let db = client.db('psm');
 
-export default db;
+module.exports = db
