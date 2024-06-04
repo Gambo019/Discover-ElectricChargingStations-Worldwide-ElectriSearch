@@ -94,7 +94,7 @@ function Login () {
               }}
               className='w-full h-10 mt-5 bg-indigo-700 hover:bg-indigo-600 text-sm text-gray-100 rounded-lg'
             >
-              Sign in to your Account
+              LOG IN
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
               <p className='text-gray-300'>Don't have an account yet?</p>
