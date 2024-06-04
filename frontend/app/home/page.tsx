@@ -1,16 +1,13 @@
 'use client';
 
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React from 'react';
 
 // components
 import Sidebar from '../components/sidebar';
 import MapComponent from '../components/map';
 
-
 export default function Home() {
-
-
     const dummyStations = [
         {
             name: 'Granville Station',
@@ -49,11 +46,12 @@ export default function Home() {
             <Head>
                 <title>Find Your Charge Station!</title>
             </Head>
-            <main className='w-100 flex'>
-                {/* Components will go here */}
-                <Sidebar stations={dummyStations}/>
-                <MapComponent />
+            <main className='w-full h-screen flex flex-col md:flex-row'>
+                <Sidebar stations={dummyStations} />
+                <div className='map-container w-full md:w-[75%] h-full'>
+                    <MapComponent />
+                </div>
             </main>
         </div>
-    )
+    );
 }

@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import Image from 'next/image';
 import PropTypes from 'prop-types';
+import { useMediaQuery } from 'react-responsive';
 
 // assets
 import LocationExample from '../assets/locationExample.png';
@@ -19,6 +22,7 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
     const [searchTerm, setSearchTerm] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSearchTerm(event.target.value);
@@ -28,8 +32,18 @@ const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
         station.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
+    const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+    };
+
+    useEffect(() => {
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
-        <div className='w-[25%] h-screen px-4 py-7 overflow-y-auto bg-gray-900 text-white flex flex-col custom-scrollbar'>
+        <div className={`sidebar-container ${isMobile ? 'w-full h-auto px-4 py-2' : 'w-[25%] h-screen px-4 py-7'} overflow-y-auto bg-gray-900 text-white flex flex-col custom-scrollbar`}>
             {/* Search Bar */}
             <div className="flex items-center bg-gray-800 p-2 rounded-md mb-6">
                 <input 
@@ -48,35 +62,54 @@ const Sidebar: React.FC<SidebarProps> = ({ stations = [] }) => {
             </div>
 
             {/* Charging Station Details */}
-            <div className="flex flex-col gap-y-6">
-                {filteredStations.length > 0 ? (
-                    filteredStations.map((station, index) => (
-                        <div key={index} className="bg-gray-800 p-4 rounded-md">
-                            <h2 className="text-lg font-semibold mb-3">{station.name}</h2>
-                            <Image src={LocationExample} width={300} height={200} className='w-full rounded-md mb-4' alt={`${station.name} Location`} />
-                            <div className='flex flex-col gap-y-2'>
-                                <div>
-                                    <h3 className='text-md font-semibold'>Address</h3>
-                                    <p>{station.location}</p>
-                                </div>
-                                <div>
-                                    <h3 className='text-md font-semibold'>Status</h3>
-                                    <div className='flex items-center gap-x-2'>
-                                        <span className={`rounded-full w-2 h-2 ${station.status === 'Available' ? 'bg-green-600' : 'bg-red-600'}`}></span>
-                                        <p>{station.status}</p>
+            {!isMobile && (
+                <div className="flex flex-col gap-y-6">
+                    {filteredStations.length > 0 ? (
+                        filteredStations.map((station, index) => (
+                            <div key={index} className="bg-gray-800 p-4 rounded-md">
+                                <h2 className="text-lg font-semibold mb-3">{station.name}</h2>
+                                <Image src={LocationExample} width={300} height={200} className='w-full rounded-md mb-4' alt={`${station.name} Location`} />
+                                <div className='flex flex-col gap-y-2'>
+                                    <div>
+                                        <h3 className='text-md font-semibold'>Address</h3>
+                                        <p>{station.location}</p>
+                                    </div>
+                                    <div>
+                                        <h3 className='text-md font-semibold'>Status</h3>
+                                        <div className='flex items-center gap-x-2'>
+                                            <span className={`rounded-full w-2 h-2 ${station.status === 'Available' ? 'bg-green-600' : 'bg-red-600'}`}></span>
+                                            <p>{station.status}</p>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h3 className='text-md font-semibold'>Number of Chargers</h3>
+                                        <p>{station.numberOfChargers}</p>
                                     </div>
                                 </div>
-                                <div>
-                                    <h3 className='text-md font-semibold'>Number of Chargers</h3>
-                                    <p>{station.numberOfChargers}</p>
-                                </div>
                             </div>
-                        </div>
-                    ))
-                ) : (
-                    <p>No stations found</p>
-                )}
-            </div>
+                        ))
+                    ) : (
+                        <p>No stations found</p>
+                    )}
+                </div>
+            )}
+
+            {/* Suggestions for Mobile */}
+            {isMobile && (
+                <div className="suggestions-container bg-gray-800 p-4 rounded-md mt-4">
+                    {filteredStations.length > 0 ? (
+                        filteredStations.map((station, index) => (
+                            <div key={index} className="suggestion-item p-2 border-b border-gray-600">
+                                <h3 className="text-md font-semibold">{station.name}</h3>
+                                <p className="text-sm">{station.location}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p>No stations found</p>
+                    )}
+                </div>
+            )}
+
             <style jsx>{`
                 .custom-scrollbar::-webkit-scrollbar {
                     width: 8px;
