@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { FaSearch } from "react-icons/fa";
 import Image from 'next/image';
 import PropTypes from 'prop-types';
-import { useMediaQuery } from 'react-responsive';
 
 // assets
 import LocationExample from '../assets/locationExample.png';

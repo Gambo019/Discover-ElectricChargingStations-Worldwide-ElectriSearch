@@ -2,7 +2,7 @@
 // Database Connection MongoDb
 ////////////////////////////////
 const { MongoClient, ServerApiVersion } = require('mongodb');
-
+require('dotenv').config()
 const URI = process.env.MONGO_URI;
 
 const client = new MongoClient(URI, {
