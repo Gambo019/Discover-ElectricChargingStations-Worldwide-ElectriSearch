@@ -73,3 +73,4 @@ exports.getSignUp = (req, res) => {
     }
     res.redirect('/auth/signup')
 }
+
