@@ -101,7 +101,7 @@ function Login () {
               LOG IN
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
-              <p className='text-gray-300'>Don't have an account yet?</p>
+              <p className='text-gray-400'>Don't have an account yet?</p>
               <a className='text-white hover:text-green-500' href="#">Sign up Here</a>
             </div>
           </div>

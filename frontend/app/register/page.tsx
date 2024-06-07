@@ -40,7 +40,7 @@ function Register() {
   }
 
   return (
-    <div className='w-full min-h-screen bg-amber-500 pt-7'>
+    <div className='w-full min-h-screen bg-green-900 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
         <div className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
@@ -108,8 +108,8 @@ function Register() {
               Create New Account
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
-              <p className='text-gray-300'>Already have an account yet?</p>
-              <a className='text-amber-500 hover:text-amber-400' href="#">Log in Here</a>
+              <p className='text-gray-400'>Already have an account yet?</p>
+              <a className='text-white hover:text-green-500' href="#">Log in Here</a>
             </div>
           </div>
         </div>
