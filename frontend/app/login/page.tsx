@@ -36,7 +36,7 @@ function Login () {
   
 
   return (
-    <div className='w-full min-h-screen bg-amber-500 pt-7'>
+    <div className='w-full min-h-screen bg-green-900 pt-7'>
       <div className='block lg:flex text-center items-center px-10 md:px-20 pt-7 pb-16'>
         {/* Login Form */}
         <form className='w-[100%] md:w-[70%] lg:w-[40%] h-fit m-auto bg-neutral-900 p-6 rounded-lg block'>
@@ -87,7 +87,7 @@ function Login () {
                 <p className='text-gray-100 text-sm'>Show Password</p>
               </div>
               <a
-                className='text-amber-500 hover:text-amber-400 text-right text-sm'
+                className='text-white hover:text-green-500 text-right text-sm'
                 href="#"
               >Forgot Password?</a>
             </div>
@@ -102,7 +102,7 @@ function Login () {
             </button>
             <div className='flex gap-2 text-left text-xs mt-5'>
               <p className='text-gray-300'>Don't have an account yet?</p>
-              <a className='text-amber-500 hover:text-amber-400' href="#">Sign up Here</a>
+              <a className='text-white hover:text-green-500' href="#">Sign up Here</a>
             </div>
           </div>
         </form>

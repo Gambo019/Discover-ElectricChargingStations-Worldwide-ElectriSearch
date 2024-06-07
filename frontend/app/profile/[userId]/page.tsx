@@ -5,7 +5,7 @@ import { FaLinkedin, FaTwitter, FaGithub } from "react-icons/fa";
 
 export default function Profile() {
     return (
-            <div className="min-h-screen bg-gray-900 bg-cover">
+            <div className="min-h-screen bg-neutral-900 bg-cover">
             {/* Top Background */}
             <div className="w-full h-1/2 relative bg-cover bg-center">
                 <img
