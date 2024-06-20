@@ -61,7 +61,7 @@ function Navbar() {
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
             type="button"
-            className="text-gray-100 bg-green-800 hover:bg-green-700 flex items-center gap-1 focus:ring-4 focus:outline-none hover:scale-105 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-transform duration-200"
+            className="hidden lg:flex text-gray-100 bg-green-800 hover:bg-green-700 items-center gap-1 focus:ring-4 focus:outline-none hover:scale-105 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-transform duration-200"
           >
             <FaChargingStation /> Find Station
           </button>
@@ -108,6 +108,17 @@ function Navbar() {
                 </Link>
               </li>
             ))}
+            {/* Mobile-only Find Station button */}
+            <li className="block lg:hidden">
+              <Link href="/find-station">
+                <button
+                  type="button"
+                  className="w-full text-gray-100 bg-green-800 hover:bg-green-700 flex items-center justify-center gap-1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center transition-transform duration-200"
+                >
+                  <FaChargingStation /> Find Station
+                </button>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
