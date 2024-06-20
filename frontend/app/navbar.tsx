@@ -52,7 +52,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-neutral-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
+    <nav className="bg-neutral-900 fixed w-full z-20 top-0 left-0 border-b  dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-1">
         <Link href="/" className="flex items-center">
           <Image src={logo} className="h-8" alt="Flowbite Logo" width={50} />
@@ -68,7 +68,7 @@ function Navbar() {
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-colors duration-200"
+            className="md:hidden inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 transition-colors duration-200"
             aria-controls="navbar-sticky"
             aria-expanded={isMenuOpen}
           >
@@ -93,12 +93,12 @@ function Navbar() {
         <div
           className={`${
             isMenuOpen ? 'block' : 'hidden'
-          } items-center justify-between w-full lg:flex md:w-auto md:order-1`}
+          } w-full lg:flex items-center justify-between md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border rounded-lg bg-neutral-900 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent transition-all duration-300">
+          <ul className="flex flex-col py-2 mt-3 font-medium bg-neutral-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent transition-all duration-300">
             {Object.entries(navLinks).map(([key, { link, icon }], index) => (
-              <li className="mr-6" key={index}>
+              <li className="border-y-[1px] md:border-0" key={index}>
                 <Link
                   href={link}
                   className="flex items-center py-2 px-3 gap-1 text-gray-100 hover:text-green-600 rounded md:hover:bg-transparent md:p-0 transition-colors duration-200"
@@ -109,7 +109,7 @@ function Navbar() {
               </li>
             ))}
             {/* Mobile-only Find Station button */}
-            <li className="block lg:hidden">
+            <li className="block lg:hidden mt-4">
               <Link href="/find-station">
                 <button
                   type="button"
