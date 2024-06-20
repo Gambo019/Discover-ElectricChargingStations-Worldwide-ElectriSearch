@@ -1,5 +1,6 @@
 'use client';
 import React, { ReactElement, useState } from 'react';
+import { motion } from 'framer-motion';
 import logo from './assets/logo.png';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -52,7 +53,7 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-neutral-900 fixed w-full z-20 top-0 left-0 border-b  dark:border-gray-600">
+    <nav className="bg-neutral-900 fixed w-full z-20 top-0 left-0 border-b dark:border-gray-600">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 px-1">
         <Link href="/" className="flex items-center">
           <Image src={logo} className="h-8" alt="Flowbite Logo" width={50} />
@@ -90,15 +91,31 @@ function Navbar() {
             </svg>
           </button>
         </div>
-        <div
-          className={`${
-            isMenuOpen ? 'block' : 'hidden'
-          } w-full lg:flex items-center justify-between md:w-auto md:order-1`}
+        <motion.div
+          initial={false}
+          animate={{ height: isMenuOpen ? 'auto' : 0 }}
+          transition={{ duration: 0.3 }}
+          className={`overflow-hidden w-full lg:flex items-center justify-between md:w-auto md:order-1`}
           id="navbar-sticky"
         >
-          <ul className="flex flex-col py-2 mt-3 font-medium bg-neutral-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent transition-all duration-300">
+          <motion.ul
+            initial="hidden"
+            animate={isMenuOpen ? "visible" : "hidden"}
+            variants={{
+              hidden: { opacity: 0, y: -20 },
+              visible: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } }
+            }}
+            className="flex flex-col py-2 mt-3 font-medium bg-neutral-900 md:flex-row md:space-x-8 md:mt-0 md:border-0 md:bg-transparent transition-all duration-300"
+          >
             {Object.entries(navLinks).map(([key, { link, icon }], index) => (
-              <li className="border-y-[1px] md:border-0" key={index}>
+              <motion.li
+                key={index}
+                variants={{
+                  hidden: { opacity: 0, y: -20 },
+                  visible: { opacity: 1, y: 0 }
+                }}
+                className="border-y-[1px] md:border-0"
+              >
                 <Link
                   href={link}
                   className="flex items-center py-2 px-3 gap-1 text-gray-100 hover:text-green-600 rounded md:hover:bg-transparent md:p-0 transition-colors duration-200"
@@ -106,7 +123,7 @@ function Navbar() {
                   {icon}
                   {key}
                 </Link>
-              </li>
+              </motion.li>
             ))}
             {/* Mobile-only Find Station button */}
             <li className="block lg:hidden mt-4">
@@ -119,8 +136,8 @@ function Navbar() {
                 </button>
               </Link>
             </li>
-          </ul>
-        </div>
+          </motion.ul>
+        </motion.div>
       </div>
     </nav>
   );
